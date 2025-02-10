@@ -16,9 +16,9 @@ class CochesController extends Controller
         $color = $request->input('color');
         $precio = $request->input('precio');
 
-        $coches = Coche::marcaScope($marca)
-        ->colorScope($color)
-        ->precioScope((int)$precio)
+        $coches = Coche::marca($marca)
+        ->color($color)
+        ->precio((int)$precio)
         ->get();
 
         return view('coches', compact('coches'));
