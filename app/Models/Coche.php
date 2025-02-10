@@ -16,22 +16,24 @@ class Coche extends Model
     ];
 
     /* Scope para filtrar por marca */
-    public function scopeMarcaScope($query, $marca)
+    public function scopeMarca($query, $marca)
     {
-        return $query->where('marca', $marca);
-    }
-     
-     /* Scope para filtrar por color */
-    public function scopeColorScope($query, $color)
-    {
-        return $query->where('color', $color);
+        if (!empty($marca)) {
+            return $query->where('marca', $marca);
+        }
     }
 
-    
-     /*Scope para filtrar por precio */
-     
-    public function scopePrecioScope($query, $precio)
+    public function scopeColor($query, $color)
     {
-        return $query->where('precio', '<=', $precio);
+        if (!empty($color)) {
+            return $query->where('color', $color);
+        }
+    }
+
+    public function scopePrecio($query, $precio)
+    {
+        if (!empty($precio)) {
+            return $query->where('precio', '<=', $precio);
+        }
     }
 }
